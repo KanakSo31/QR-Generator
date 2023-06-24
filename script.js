@@ -1,10 +1,24 @@
 const qrText = document.getElementById('qr-text');
 const sizes = document.getElementById('sizes');
-const generateBtn = document.getElementById('generateBtn');
+const GenerateBtn = document.getElementById('GenerateBtn');
 const DownloadBtn = document.getElementById('DownloadBtn');
 
 const qrContainer = document.getElementById('.body');
 
-generateBtn.addEventListener('click', (e)=>{
+
+let size = sizes.ariaValueMax;
+
+GenerateBtn.addEventListener('click', (e)=>{
     e.preventDefault();
-})
+    generateQRCode();
+});
+
+function generateQRCode(){
+    new QRCode(qrContainer, {
+        text:qrText.value,
+        height:size,
+        width:size,
+        colorLight:"fff",
+        colorDark:"#000",
+    })
+}
