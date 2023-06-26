@@ -3,10 +3,10 @@ const sizes = document.getElementById('sizes');
 const GenerateBtn = document.getElementById('GenerateBtn');
 const DownloadBtn = document.getElementById('DownloadBtn');
 
-const qrContainer = document.getElementById('.body');
+const qrContainer = document.querySelector('.body');
 
 
-let size = sizes.ariaValueMax;
+let size = sizes.value;
 
 GenerateBtn.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -18,7 +18,7 @@ function generateQRCode(){
         text:qrText.value,
         height:size,
         width:size,
-        colorLight:"fff",
+        colorLight:"#fff",
         colorDark:"#000",
     })
 }
