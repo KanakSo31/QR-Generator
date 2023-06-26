@@ -13,6 +13,11 @@ GenerateBtn.addEventListener('click', (e)=>{
     generateQRCode();
 });
 
+sizes.addEventListener('change',(e)=>{
+    size = e.target.value;
+    generateQRCode();
+});
+
 function generateQRCode(){
     qrContainer.innerHTML = "";
     new QRCode(qrContainer, {
