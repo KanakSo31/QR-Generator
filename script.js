@@ -10,7 +10,12 @@ let size = sizes.value;
 
 GenerateBtn.addEventListener('click', (e)=>{
     e.preventDefault();
-    generateQRCode();
+    if(text.value.length > 0){
+
+        generateQRCode();
+    }else{
+        alert("Enter the text or link to Generate your QR code")
+    }
 });
 
 sizes.addEventListener('change',(e)=>{
