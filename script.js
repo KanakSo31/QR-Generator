@@ -8,34 +8,44 @@ const qrContainer = document.querySelector('.body');
 
 let size = sizes.value;
 
-GenerateBtn.addEventListener('click', (e)=>{
+GenerateBtn.addEventListener('click', (e) => {
     e.preventDefault();
     isEmptyInput()
-    
+
 });
 
-sizes.addEventListener('change',(e)=>{
+sizes.addEventListener('change', (e) => {
     size = e.target.value;
     isEmptyInput();
-    // generateQRCode();
 });
 
-function isEmptyInput() {
-    if(qrText.value.length > 0){
-
-        generateQRCode();
+DownloadBtn.addEventListener('click',()=>{
+    let img = document.querySelector('.body img');
+    if(img !== null){
+        let imgAtrr = img.getAttribute('src');
+        DownloadBtn.setAttribute("href", imgAtrr);
     }else{
-        alert("Enter the text or link to Generate your QR code")
+        DownloadBtn.setAttribute("href", `${document.querySelector('canvas').toDataURL()}`);
     }
+})
+
+function isEmptyInput() {
+    // if (qrText.value.length > 0) {
+
+    //     generateQRCode();
+    // } else {
+    //     alert("Enter the text or link to Generate your QR code")
+    // }
+    qrText.value.length > 0 ? generateQRCode() : alert("Enter the text or link to Generate your QR code");
 }
 
-function generateQRCode(){
+function generateQRCode() {
     qrContainer.innerHTML = "";
     new QRCode(qrContainer, {
-        text:qrText.value,
-        height:size,
-        width:size,
-        colorLight:"#fff",
-        colorDark:"#000",
+        text: qrText.value,
+        height: size,
+        width: size,
+        colorLight: "#fff",
+        colorDark: "#000",
     })
 }
